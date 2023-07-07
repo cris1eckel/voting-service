@@ -4,7 +4,7 @@ services:
     image: postgres:13
     environment:
       - POSTGRES_USER=voting-db-user
-      - POSTGRES_PASSWORD=voting-db-password
+      - POSTGRES_PASSWORD=voting
       - POSTGRES_DB=votingdb
     ports:
       - "5437:5432"
