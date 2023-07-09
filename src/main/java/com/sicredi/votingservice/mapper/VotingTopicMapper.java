@@ -1,4 +1,4 @@
-package com.sicredi.votingservice.service;
+package com.sicredi.votingservice.mapper;
 
 import com.sicredi.votingservice.entity.VotingTopicEntity;
 import com.sicredi.votingservice.model.VotingTopic;
@@ -8,4 +8,6 @@ import org.mapstruct.Mapper;
 public interface VotingTopicMapper {
 
     VotingTopicEntity toEntity (VotingTopic votingTopic);
+
+    VotingTopic toModel (VotingTopicEntity entity);
 }

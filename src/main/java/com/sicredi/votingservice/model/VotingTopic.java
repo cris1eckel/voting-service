@@ -1,6 +1,7 @@
 package com.sicredi.votingservice.model;
 
-import java.time.LocalDateTime;
+import com.sicredi.votingservice.entity.AssociateVoteEntity;
+import java.util.List;
 import lombok.Data;
 
 @Data
@@ -10,7 +11,5 @@ public class VotingTopic {
 
     String subject;
 
-    LocalDateTime startDate;
-
-    LocalDateTime endDate;
+    List<AssociateVoteEntity> votes;
 }

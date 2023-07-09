@@ -1,12 +1,14 @@
 package com.sicredi.votingservice.entity;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import java.time.LocalDateTime;
+import java.util.List;
 import lombok.Data;
 
 @Data
@@ -21,9 +23,6 @@ public class VotingTopicEntity {
     @Column
     private String subject;
 
-    @Column
-    private LocalDateTime startDate;
-
-    @Column
-    private LocalDateTime endDate;
+    @OneToMany(mappedBy = "votingTopic", cascade = CascadeType.ALL)
+    private List<AssociateVoteEntity> votes;
 }

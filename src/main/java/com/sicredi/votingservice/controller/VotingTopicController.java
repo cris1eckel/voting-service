@@ -1,7 +1,7 @@
 package com.sicredi.votingservice.controller;
 
 import com.sicredi.votingservice.model.VotingTopic;
-import com.sicredi.votingservice.service.VotingService;
+import com.sicredi.votingservice.service.VotingTopicService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -10,15 +10,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/voting")
+@RequestMapping("/voting-topic")
 @RequiredArgsConstructor
-public class VotingController {
+public class VotingTopicController {
 
-    private final VotingService votingService;
+    private final VotingTopicService votingTopicService;
 
     @PostMapping
     public ResponseEntity<?> createNewTopic(@RequestBody VotingTopic topic) {
-        votingService.create(topic);
+        votingTopicService.create(topic);
         return ResponseEntity.ok().build();
     }
 }
