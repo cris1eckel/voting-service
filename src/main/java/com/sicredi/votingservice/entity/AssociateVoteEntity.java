@@ -7,7 +7,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
 
@@ -20,13 +19,12 @@ public class AssociateVoteEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToOne
-    @JoinColumn(name = "user_Id")
-    private UserEntity user;
-
     @ManyToOne
     @JoinColumn(name = "voting_topic_id")
     private VotingTopicEntity votingTopic;
+
+    @Column(name = "associate_code")
+    private Long associateCode;
 
     @Column
     private Boolean vote;

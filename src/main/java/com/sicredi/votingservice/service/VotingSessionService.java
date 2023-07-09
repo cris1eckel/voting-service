@@ -4,7 +4,7 @@ import com.sicredi.votingservice.entity.VotingSessionEntity;
 import com.sicredi.votingservice.mapper.VotingSessionMapper;
 import com.sicredi.votingservice.model.VotingSession;
 import com.sicredi.votingservice.repository.VotingSessionRepository;
-import com.sicredi.votingservice.service.exception.VotingSessionAlreadyExists;
+import com.sicredi.votingservice.service.exception.VotingSessionAlreadyExistsException;
 import com.sicredi.votingservice.service.exception.VotingSessionInvalidDateException;
 import jakarta.persistence.EntityNotFoundException;
 import java.time.LocalDateTime;
@@ -36,7 +36,7 @@ public class VotingSessionService {
         }
 
         if (votingSession != null) {
-            throw new VotingSessionAlreadyExists();
+            throw new VotingSessionAlreadyExistsException();
         }
 
         var startDate = session.getStartDate();

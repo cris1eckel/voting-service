@@ -4,17 +4,10 @@ CREATE TABLE voting_topics
     subject  varchar      not null
 );
 
-CREATE TABLE users
-(
-    id       bigserial PRIMARY KEY,
-    name  varchar      not null,
-    national_id  varchar      not null
-);
-
 CREATE TABLE associate_votes
 (
     id       bigserial PRIMARY KEY,
-    user_id bigint NOT NULL REFERENCES users(id),
+    associate_code bigint NOT NUll,
     voting_topic_id bigint NOT NULL REFERENCES voting_topics(id),
     vote bool not null
 );
