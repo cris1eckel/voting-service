@@ -2,6 +2,7 @@ package com.sicredi.votingservice.service;
 
 import com.sicredi.votingservice.mapper.AssociateVoteMapper;
 import com.sicredi.votingservice.model.AssociateVote;
+import com.sicredi.votingservice.model.ResultsResponse;
 import com.sicredi.votingservice.repository.AssociateVoteRepository;
 import com.sicredi.votingservice.service.exception.UserAlreadyVotedException;
 import com.sicredi.votingservice.service.exception.VotingSessionAlreadyFinishedException;
@@ -13,7 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
-public class VotingService {
+public class AssociateVoteService {
 
     private final AssociateVoteRepository associateVoteRepository;
 

@@ -1,11 +1,14 @@
 package com.sicredi.votingservice.service;
 
+import com.sicredi.votingservice.entity.AssociateVoteEntity;
 import com.sicredi.votingservice.entity.VotingSessionEntity;
 import com.sicredi.votingservice.mapper.VotingSessionMapper;
+import com.sicredi.votingservice.model.ResultsResponse;
 import com.sicredi.votingservice.model.VotingSession;
 import com.sicredi.votingservice.repository.VotingSessionRepository;
 import com.sicredi.votingservice.service.exception.VotingSessionAlreadyExistsException;
 import com.sicredi.votingservice.service.exception.VotingSessionInvalidDateException;
+import com.sicredi.votingservice.service.exception.VotingSessionNotFinishedException;
 import jakarta.persistence.EntityNotFoundException;
 import java.time.LocalDateTime;
 import lombok.RequiredArgsConstructor;
@@ -51,7 +54,7 @@ public class VotingSessionService {
             session.setEndDate(endDate);
         }
 
-        if(startDate.isAfter(endDate)){
+        if (startDate.isAfter(endDate)) {
             throw new VotingSessionInvalidDateException();
         }
         VotingSessionEntity entity = mapper.toEntity(session);
@@ -62,4 +65,42 @@ public class VotingSessionService {
         return mapper.toModel(this.votingSessionRepository.findByVotingTopicId(votingTopicId).orElseThrow(EntityNotFoundException::new));
     }
 
+    public VotingSession findById(Long id) {
+        return mapper.toModel(this.votingSessionRepository.findById(id).orElseThrow(EntityNotFoundException::new));
+    }
+
+    @Transactional
+    public ResultsResponse checkResults(Long votingSessionId) {
+        var now = LocalDateTime.now();
+
+        var votingSession = findById(votingSessionId);
+
+        if (now.isBefore(votingSession.getEndDate())) {
+            throw new VotingSessionNotFinishedException();
+        }
+        int positiveVote = 0;
+        int negativeVote = 0;
+        boolean approved = false;
+
+        var voteList = votingSession.getVotingTopic().getVotes();
+        for (AssociateVoteEntity voteEntity : voteList) {
+            if (voteEntity.getVote()) {
+                positiveVote++;
+            } else {
+                negativeVote++;
+            }
+        }
+        if (positiveVote > negativeVote) {
+            approved = true;
+
+        }
+        var subject = votingSession.getVotingTopic().getSubject();
+
+        return ResultsResponse.builder()
+                .positiveVotes(positiveVote)
+                .negativeVotes(negativeVote)
+                .subject(subject)
+                .approved(approved)
+                .build();
+    }
 }

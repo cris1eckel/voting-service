@@ -1,7 +1,7 @@
 package com.sicredi.votingservice.controller;
 
 import com.sicredi.votingservice.model.AssociateVote;
-import com.sicredi.votingservice.service.VotingService;
+import com.sicredi.votingservice.service.AssociateVoteService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class AssociateVoteController {
 
-    private final VotingService votingService;
+    private final AssociateVoteService votingService;
 
     @PostMapping
     ResponseEntity<?> create(@RequestBody AssociateVote vote){
