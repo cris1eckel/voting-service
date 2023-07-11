@@ -6,10 +6,10 @@ import com.sicredi.votingservice.service.VotingSessionService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -24,6 +24,7 @@ public class VotingSessionController {
     /**
      * *
      * Creates a new voting session.
+     *
      * @param session
      */
     @PostMapping
@@ -35,11 +36,12 @@ public class VotingSessionController {
     /**
      * *
      * Checks the voting session results.
+     *
      * @param id
      * @return ResultsResponse
      */
-    @GetMapping
-    public ResponseEntity<?> results(@RequestParam Long id) {
+    @GetMapping("{id}/results")
+    public ResponseEntity<?> results(@PathVariable Long id) {
         var votingSessionResults = this.votingSessionService.checkResults(id);
         producer.send(votingSessionResults.toString());
         return ResponseEntity.ok(votingSessionResults);
