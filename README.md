@@ -10,21 +10,19 @@ To compile the project you'll need Docker and Docker Compose, the docker compose
 
 ```docker-compose up --build```
 
-# API Endpoints
-
 # Postman Collection: 
 https://api.postman.com/collections/21156084-0dfc0d20-3b05-404f-88c5-5b2837de43a5?access_key=PMAT-01H535DVM1T39PPRNF69KDCJMB
 
-# CURL:
+# API Endpoints
 
-# NEW Voting-Topic (Pauta)
+NEW Voting-Topic (Pauta)
 curl --location 'http://localhost:8080/voting-topic' \
 --header 'Content-Type: application/json' \
 --data '{
 "subject": "Você está feliz com a forma que recompensamos nossos associados atualmente?"
 }'
 
-# NEW Voting-Session (Sessão)
+NEW Voting-Session (Sessão)
 curl --location 'http://localhost:8080/voting-session' \
 --header 'Content-Type: application/json' \
 --data '{
@@ -35,7 +33,7 @@ curl --location 'http://localhost:8080/voting-session' \
 "endDate": "2023-07-13T15:00:00.000"
 }'
 
-# NEW Vote(Voto)
+NEW Vote(Voto)
 curl --location 'http://localhost:8080/vote' \
 --header 'Content-Type: application/json' \
 --data '{
@@ -47,5 +45,5 @@ curl --location 'http://localhost:8080/vote' \
 "nationalId":"03899212037"
 }'
 
-# GET RESULTS
+GET RESULTS
 curl --location 'http://localhost:8080/voting-session/1/results'
