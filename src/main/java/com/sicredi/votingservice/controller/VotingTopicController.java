@@ -16,6 +16,11 @@ public class VotingTopicController {
 
     private final VotingTopicService votingTopicService;
 
+    /**
+     * *
+     * Creates a new voting topic.
+     * @param topic
+     */
     @PostMapping
     public ResponseEntity<?> createNewTopic(@RequestBody VotingTopic topic) {
         votingTopicService.create(topic);

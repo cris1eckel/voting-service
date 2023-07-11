@@ -26,7 +26,7 @@ public class VotingSessionService {
     private final VotingSessionMapper mapper;
 
     @Transactional
-    public void create(VotingSession session) {
+    public VotingSession create(VotingSession session) {
         var votingTopic = votingTopicService.findById(session.getVotingTopic().getId());
         session.setVotingTopic(votingTopic);
 
@@ -58,7 +58,7 @@ public class VotingSessionService {
             throw new VotingSessionInvalidDateException();
         }
         VotingSessionEntity entity = mapper.toEntity(session);
-        this.votingSessionRepository.save(entity);
+        return mapper.toModel(this.votingSessionRepository.save(entity));
     }
 
     public VotingSession findVotingSessionByVotingTopicId(Long votingTopicId) {

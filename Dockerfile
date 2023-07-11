@@ -1,13 +1,9 @@
-ARG REPOSITORY_URL=237180123938.dkr.ecr.eu-north-1.amazonaws.com
-FROM ${REPOSITORY_URL}/ecr-public/docker/library/eclipse-temurin:11-jre-alpine
-COPY target/voting.service.jar /opt/app/application.jar
-COPY infra/image/entrypoint.sh /opt/app/entrypoint.sh
-RUN chmod +x /opt/app/entrypoint.sh
-RUN apk add --no-cache libstdc++
-EXPOSE 8000
-# JMX
-EXPOSE 9011
-# JVM debugging port
-EXPOSE 5006
+FROM maven:3-eclipse-temurin-17-alpine AS build
+COPY src /home/app/src
+COPY pom.xml /home/app
+RUN mvn -f /home/app/pom.xml clean package -Dmaven.test.skip
 
-ENTRYPOINT [ "/opt/app/entrypoint.sh" ]
+FROM eclipse-temurin:17-jre-alpine
+COPY --from=build /home/app/target/voting-service.jar /usr/local/lib/voting-service.jar
+EXPOSE 8080
+ENTRYPOINT ["java","-jar","/usr/local/lib/voting-service.jar"]

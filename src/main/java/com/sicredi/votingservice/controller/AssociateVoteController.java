@@ -16,6 +16,11 @@ public class AssociateVoteController {
 
     private final AssociateVoteService votingService;
 
+    /**
+     * *
+     * Saves a vote.
+     * @param vote
+     */
     @PostMapping
     ResponseEntity<?> create(@RequestBody AssociateVote vote){
         this.votingService.create(vote);

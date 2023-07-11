@@ -27,7 +27,7 @@ public class AssociateVoteService {
 
     @Transactional
     public void create(AssociateVote vote) {
-        //Apparently the HEROKU end point is unavailable so i'll just leave the request commented.
+        //Apparently the HEROKU end point is unavailable so im leaving the request commented.
         //nationalIdService.canVote(vote.getNationalId());
 
         var timeNow = LocalDateTime.now();

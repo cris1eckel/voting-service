@@ -2,9 +2,11 @@ package com.sicredi.votingservice.service.exception.handler;
 
 import com.sicredi.votingservice.service.exception.EntityNotFoundException;
 import com.sicredi.votingservice.service.exception.UserAlreadyVotedException;
+import com.sicredi.votingservice.service.exception.UserNotAllowedToVoteException;
 import com.sicredi.votingservice.service.exception.VotingSessionAlreadyExistsException;
 import com.sicredi.votingservice.service.exception.VotingSessionAlreadyFinishedException;
 import com.sicredi.votingservice.service.exception.VotingSessionInvalidDateException;
+import com.sicredi.votingservice.service.exception.VotingSessionNotFinishedException;
 import com.sicredi.votingservice.service.exception.VotingSessionNotStartedException;
 import com.sicredi.votingservice.utils.AbstractResponse;
 import lombok.extern.slf4j.Slf4j;
@@ -22,6 +24,16 @@ public class CoreExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(UserAlreadyVotedException.class)
     public ResponseEntity<AbstractResponse> handleUserAlreadyVoted(UserAlreadyVotedException e) {
+        log.warn(e.getMessage(), e);
+        AbstractResponse response = new AbstractResponse();
+        response.setMessage(e.getMessage());
+        response.setMessageCode(e.getMessageCode());
+        response.setData(e.getData());
+        return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(UserNotAllowedToVoteException.class)
+    public ResponseEntity<AbstractResponse> handleUserNotAllowedToVote(UserNotAllowedToVoteException e) {
         log.warn(e.getMessage(), e);
         AbstractResponse response = new AbstractResponse();
         response.setMessage(e.getMessage());
@@ -60,9 +72,18 @@ public class CoreExceptionHandler extends ResponseEntityExceptionHandler {
         return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
     }
 
-
     @ExceptionHandler(VotingSessionNotStartedException.class)
     public ResponseEntity<AbstractResponse> handleVotingSessionNotStarted(VotingSessionNotStartedException e) {
+        log.warn(e.getMessage(), e);
+        AbstractResponse response = new AbstractResponse();
+        response.setMessage(e.getMessage());
+        response.setMessageCode(e.getMessageCode());
+        response.setData(e.getData());
+        return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(VotingSessionNotFinishedException.class)
+    public ResponseEntity<AbstractResponse> handleVotingSessionNotFinish(VotingSessionNotFinishedException e) {
         log.warn(e.getMessage(), e);
         AbstractResponse response = new AbstractResponse();
         response.setMessage(e.getMessage());

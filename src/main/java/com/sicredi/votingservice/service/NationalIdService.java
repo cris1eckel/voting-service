@@ -9,7 +9,6 @@ import org.springframework.web.client.RestTemplate;
 
 @Component
 public class NationalIdService {
-
     private static final String NATIONAL_ID_API_URL = "https://user-info.herokupapp.com/users/";
 
     public boolean canVote(String nationalId) {

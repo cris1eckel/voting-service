@@ -21,12 +21,23 @@ public class VotingSessionController {
 
     private final VotingResultsProducer producer;
 
+    /**
+     * *
+     * Creates a new voting session.
+     * @param session
+     */
     @PostMapping
     public ResponseEntity<?> createNewVotingSession(@RequestBody VotingSession session) {
         votingSessionService.create(session);
         return ResponseEntity.ok().build();
     }
 
+    /**
+     * *
+     * Checks the voting session results.
+     * @param id
+     * @return ResultsResponse
+     */
     @GetMapping
     public ResponseEntity<?> results(@RequestParam Long id) {
         var votingSessionResults = this.votingSessionService.checkResults(id);
