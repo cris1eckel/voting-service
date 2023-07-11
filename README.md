@@ -10,11 +10,6 @@ To compile the project you'll need Docker and Docker Compose, the docker compose
 
 ```docker-compose up --build```
 
-```mvn test```
-
-
-```mvn package```
-
 # API Endpoints
 
 # Postman Collection: 
