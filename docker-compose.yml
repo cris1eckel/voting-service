@@ -10,7 +10,41 @@ services:
       - "5437:5432"
     networks:
       - my_network
+  
+  zookeeper-1:
+    image: docker.io/bitnami/zookeeper:3
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+      ALLOW_ANONYMOUS_LOGIN: 'yes'
+    ports:
+      - "22181:2181"
+  
+      
+  kafka-1:
+    image: docker.io/bitnami/kafka:2-debian-10
+    depends_on:
+      - zookeeper-1
+    ports:
+      - "29092:29092"
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper-1:2181 #,zookeeper-2:2181
+      KAFKA_CFG_LISTENERS: CLIENT://:9092,EXTERNAL://:29092
+      KAFKA_ADVERTISED_LISTENERS: CLIENT://kafka-1:9092,EXTERNAL://localhost:29092
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: CLIENT:PLAINTEXT,EXTERNAL:PLAINTEXT
+      KAFKA_INTER_BROKER_LISTENER_NAME: CLIENT
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      ALLOW_PLAINTEXT_LISTENER: 'yes'
       
 networks:
   my_network:
     driver: bridge
+    
+volumes:
+  zookeeper1_data:
+    driver: local
+  zookeeper2_data:
+    driver: local
+  kafka1_data:
+    driver: local

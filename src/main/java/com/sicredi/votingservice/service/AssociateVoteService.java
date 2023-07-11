@@ -2,7 +2,6 @@ package com.sicredi.votingservice.service;
 
 import com.sicredi.votingservice.mapper.AssociateVoteMapper;
 import com.sicredi.votingservice.model.AssociateVote;
-import com.sicredi.votingservice.model.ResultsResponse;
 import com.sicredi.votingservice.repository.AssociateVoteRepository;
 import com.sicredi.votingservice.service.exception.UserAlreadyVotedException;
 import com.sicredi.votingservice.service.exception.VotingSessionAlreadyFinishedException;
@@ -22,10 +21,15 @@ public class AssociateVoteService {
 
     private final VotingSessionService votingSessionService;
 
+    private final NationalIdService nationalIdService;
+
     private final AssociateVoteMapper mapper;
 
     @Transactional
     public void create(AssociateVote vote) {
+        //Apparently the HEROKU end point is unavailable so i'll just leave the request commented.
+        //nationalIdService.canVote(vote.getNationalId());
+
         var timeNow = LocalDateTime.now();
 
         var votingTopic = this.votingTopicService.findById(vote.getVotingTopic().getId());

@@ -39,7 +39,6 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-data-jpa:3.1.1" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-aop:3.1.1" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework:spring-aop:6.0.10" level="project" />
     <orderEntry type="library" name="Maven: org.aspectj:aspectjweaver:1.9.19" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-jdbc:3.1.1" level="project" />
     <orderEntry type="library" name="Maven: com.zaxxer:HikariCP:5.0.1" level="project" />
@@ -62,9 +61,7 @@
     <orderEntry type="library" name="Maven: org.springframework.data:spring-data-jpa:3.1.1" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.data:spring-data-commons:3.1.1" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-orm:6.0.10" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework:spring-beans:6.0.10" level="project" />
     <orderEntry type="library" name="Maven: jakarta.annotation:jakarta.annotation-api:2.1.1" level="project" />
-    <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:2.0.7" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-aspects:6.0.10" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-web:3.1.1" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter:3.1.1" level="project" />
@@ -108,7 +105,6 @@
     <orderEntry type="library" name="Maven: org.projectlombok:lombok:1.18.28" level="project" />
     <orderEntry type="library" name="Maven: org.liquibase:liquibase-core:4.20.0" level="project" />
     <orderEntry type="library" name="Maven: javax.xml.bind:jaxb-api:2.3.1" level="project" />
-    <orderEntry type="library" name="Maven: javax.activation:javax.activation-api:1.2.0" level="project" />
     <orderEntry type="library" name="Maven: org.yaml:snakeyaml:1.33" level="project" />
     <orderEntry type="library" name="Maven: com.opencsv:opencsv:5.7.1" level="project" />
     <orderEntry type="library" name="Maven: org.apache.commons:commons-lang3:3.12.0" level="project" />
@@ -184,5 +180,21 @@
     <orderEntry type="library" scope="TEST" name="Maven: org.apiguardian:apiguardian-api:1.1.2" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.junit.platform:junit-platform-launcher:1.9.3" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.junit.platform:junit-platform-engine:1.9.3" level="project" />
+    <orderEntry type="library" name="Maven: io.awspring.cloud:spring-cloud-aws-core:2.3.5" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-beans:6.0.10" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-aop:6.0.10" level="project" />
+    <orderEntry type="library" name="Maven: com.amazonaws:aws-java-sdk-core:1.12.132" level="project" />
+    <orderEntry type="library" name="Maven: commons-codec:commons-codec:1.15" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.httpcomponents:httpclient:4.5.13" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.httpcomponents:httpcore:4.4.16" level="project" />
+    <orderEntry type="library" name="Maven: software.amazon.ion:ion-java:1.0.2" level="project" />
+    <orderEntry type="library" name="Maven: com.fasterxml.jackson.dataformat:jackson-dataformat-cbor:2.15.2" level="project" />
+    <orderEntry type="library" name="Maven: joda-time:joda-time:2.8.1" level="project" />
+    <orderEntry type="library" name="Maven: com.amazonaws:aws-java-sdk-s3:1.12.132" level="project" />
+    <orderEntry type="library" name="Maven: com.amazonaws:aws-java-sdk-kms:1.12.132" level="project" />
+    <orderEntry type="library" name="Maven: com.amazonaws:jmespath-java:1.12.132" level="project" />
+    <orderEntry type="library" name="Maven: com.amazonaws:aws-java-sdk-ec2:1.12.132" level="project" />
+    <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:2.0.7" level="project" />
+    <orderEntry type="library" name="Maven: javax.activation:javax.activation-api:1.2.0" level="project" />
   </component>
 </module>

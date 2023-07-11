@@ -13,4 +13,6 @@ public class AssociateVote {
     Long associateCode;
 
     Boolean vote;
+
+    String nationalId;
 }
