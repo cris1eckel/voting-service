@@ -8,11 +8,13 @@ import com.sicredi.votingservice.service.exception.VotingSessionAlreadyFinishedE
 import com.sicredi.votingservice.service.exception.VotingSessionNotStartedException;
 import java.time.LocalDateTime;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class AssociateVoteService {
 
     private final AssociateVoteRepository associateVoteRepository;
@@ -27,9 +29,9 @@ public class AssociateVoteService {
 
     @Transactional
     public void create(AssociateVote vote) {
+        log.info("Creating a new vote with the following data: {}", vote);
         //Apparently the HEROKU end point is unavailable so im leaving the request commented.
         //nationalIdService.canVote(vote.getNationalId());
-
         var timeNow = LocalDateTime.now();
 
         var votingTopic = this.votingTopicService.findById(vote.getVotingTopic().getId());

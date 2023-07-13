@@ -5,9 +5,11 @@ import com.sicredi.votingservice.model.VotingTopic;
 import com.sicredi.votingservice.repository.VotingTopicRepository;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 @Service
+@Slf4j
 @RequiredArgsConstructor
 public class VotingTopicService {
 
@@ -16,6 +18,7 @@ public class VotingTopicService {
     private final VotingTopicMapper mapper;
 
     public void create(VotingTopic topic) {
+        log.info("Creating a new voting topic with the following data: {}", topic);
         this.votingTopicRepository.save(mapper.toEntity(topic));
     }
 

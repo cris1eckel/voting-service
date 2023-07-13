@@ -12,10 +12,12 @@ import com.sicredi.votingservice.service.exception.VotingSessionNotFinishedExcep
 import jakarta.persistence.EntityNotFoundException;
 import java.time.LocalDateTime;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
+@Slf4j
 @RequiredArgsConstructor
 public class VotingSessionService {
 
@@ -27,6 +29,7 @@ public class VotingSessionService {
 
     @Transactional
     public VotingSession create(VotingSession session) {
+        log.info("Creating a new voting session with the following data: {}", session);
         var votingTopic = votingTopicService.findById(session.getVotingTopic().getId());
         session.setVotingTopic(votingTopic);
 
@@ -71,6 +74,7 @@ public class VotingSessionService {
 
     @Transactional
     public ResultsResponse checkResults(Long votingSessionId) {
+        log.info("Retrieving results for vote session of id: {}}", votingSessionId);
         var now = LocalDateTime.now();
 
         var votingSession = findById(votingSessionId);
